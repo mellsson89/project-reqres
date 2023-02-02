@@ -10,6 +10,7 @@ import {fetchPosts, fetchFilterById} from '../../redux/posts/posts-operations';
 import {clearPosts, clearFilterPosts, resetErrorFilter} from "../../redux/posts/posts-reducer";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {IPosts} from "../../models";
+import style from './styles/homepage.module.scss'
 
 
 
@@ -116,7 +117,9 @@ export default function HomePage () {
 
     </Grid>
 
-    {error === 404 && <h1>Post with id was not found! Please, enter another id or <Link to="/" onClick={resetError}>back to</Link> all posts.</h1>}
+    {error === 404 && <div className={style.containerError}>
+        <p><span className={style.textError}>Post with 'id' was not found!</span> Please, enter another id or <Link to="/" onClick={resetError}>back to</Link> all posts.</p>
+    </div>}
 
     { posts  && <TableContainer component={Paper} sx={{marginY:"20px"}}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
